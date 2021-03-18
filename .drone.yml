@@ -1,15 +1,10 @@
 kind: pipeline
+type: docker
 name: test-on-amd64
 
 platform:
   os: linux
   arch: amd64
-
-environment:
-  GH_REPO_NAME: crow
-  DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
-  GH_REPO_REF: github.com/crowcpp/crow.git
-  THEME_REPO_REF: github.com/crowcpp/darxygen.git
 
 steps:
 - name: prep
@@ -22,9 +17,3 @@ steps:
   image: gcc
   commands:
   - ls
-  
-trigger:
-  branch:
-  - master
-  event:
-  - push
