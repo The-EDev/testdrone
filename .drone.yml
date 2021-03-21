@@ -10,6 +10,8 @@ steps:
 - name: prep
   image: gcc
   commands:
+  - sudo apt install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev
+  - pip install mkdocs-material
   - mkdir direcc
   - touch textfile.txt
 
