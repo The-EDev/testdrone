@@ -10,7 +10,8 @@ steps:
 - name: prep
   image: ubuntu:focal
   commands:
-  - apt install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang
+  - apt -y update
+  - apt -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang
   - pip install mkdocs-material
   - mkdir direcc
   - touch textfile.txt
