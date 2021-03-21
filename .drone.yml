@@ -8,14 +8,14 @@ platform:
 
 steps:
 - name: prep
-  image: gcc
+  image: ubuntu:focal
   commands:
-  - apt install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev
+  - apt install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang
   - pip install mkdocs-material
   - mkdir direcc
   - touch textfile.txt
 
 - name: buildntest
-  image: gcc
+  image: ubuntu:focal
   commands:
   - ls
