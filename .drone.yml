@@ -23,4 +23,4 @@ steps:
 - name: buildntest
   image: ubuntu:focal
   commands:
-  -ls
+  - ls
