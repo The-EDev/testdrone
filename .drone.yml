@@ -27,7 +27,7 @@ steps:
   - ls build
   - pwd
 
-triggers:
+trigger:
   - branch:
   - master
   - event:
