@@ -26,3 +26,9 @@ steps:
   - ls
   - ls build
   - pwd
+
+triggers:
+  - branch:
+  - master
+  - event:
+  - pull_request
