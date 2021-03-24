@@ -14,10 +14,12 @@ steps:
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang python3 python3-pip
   - pip3 install mkdocs-material
-  - mkdir direcc
-  - touch textfile.txt
 
 - name: buildntest
   image: ubuntu:focal
   commands:
-  - ls
+  - mkdir build
+  - cd build
+  - cmake --version
+  - cmake ..
+  - make -j4 && ctest -V -j4
