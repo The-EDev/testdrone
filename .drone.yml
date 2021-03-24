@@ -28,7 +28,7 @@ steps:
   - pwd
 
 trigger:
-  - branch:
+  branch:
   - master
-  - event:
+  event:
   - pull_request
