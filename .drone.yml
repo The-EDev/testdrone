@@ -10,7 +10,7 @@ steps:
 - name: prep
   image: ubuntu:focal
   commands:
-  - apt-get -y update
+  - apt-get -y update && 12
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang
   - pip install mkdocs-material
   - mkdir direcc
