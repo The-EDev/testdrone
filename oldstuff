@@ -1,7 +1,7 @@
-
+---
 kind: pipeline
 type: docker
-name: test-on-amd64-pull
+name: test-on-amd64
 
 platform:
   os: linux
@@ -29,7 +29,9 @@ steps:
   - pwd
 
 trigger:
-  ref:
-  - - refs/pull/*/head
+  branch:
+  - master
   event:
   - push
+  
+--- 
