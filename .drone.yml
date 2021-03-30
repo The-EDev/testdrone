@@ -1,4 +1,4 @@
-
+---
 kind: pipeline
 type: docker
 name: test-on-amd64-pull
@@ -26,15 +26,39 @@ steps:
   - cd ..
   - coveralls -i include --exclude-pattern .*/http_parser_merged.h --exclude-pattern .*/TinySHA1.hpp --gcov-options '\-lp'
 
-- name: buildntest
+trigger:
+  ref:
+  - refs/pull/*/head
+  event:
+  - push
+  
+---
+kind: pipeline
+type: docker
+name: test-on-arm64-pull
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+- name: prep
   image: ubuntu:focal
+  environment:
+    COVERALLS_REPO_TOKEN:
+      from_secret: coveralls_token
   commands:
-  - ls
-  - ls build
-  - pwd
+  - export DEBIAN_FRONTEND=noninteractive
+  - apt-get -y update
+  - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3
+  - mkdir build
+  - cd build
+  - cmake --version
+  - cmake ..
+  - make -j4 && ctest -V -j4
 
 trigger:
   ref:
-  - - refs/pull/*/head
+  - refs/pull/*/head
   event:
   - push
