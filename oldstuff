@@ -1,0 +1,37 @@
+---
+kind: pipeline
+type: docker
+name: test-on-amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: prep
+  image: ubuntu:focal
+  commands:
+  - export DEBIAN_FRONTEND=noninteractive
+  - apt-get -y update
+  - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip
+  - pip3 install mkdocs-material
+  - mkdir build
+  - cd build
+  - cmake --version
+  - cmake ..
+  - make -j4 && ctest -V -j4
+
+- name: buildntest
+  image: ubuntu:focal
+  commands:
+  - ls
+  - ls build
+  - pwd
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  
+--- 
