@@ -27,6 +27,6 @@ steps:
 
 trigger:
   ref:
-  - refs/pull/*/head
+  - - refs/pull/*/head
   event:
   - push
