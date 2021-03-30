@@ -14,12 +14,14 @@ steps:
   - export DEBIAN_FRONTEND=noninteractive
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip
-  - pip3 install mkdocs-material
+  - pip3 install mkdocs-material cpp-coveralls
   - mkdir build
   - cd build
   - cmake --version
   - cmake ..
   - make -j4 && ctest -V -j4
+  - cd ..
+  - coveralls -i include --exclude-pattern .*/http_parser_merged.h --exclude-pattern .*/TinySHA1.hpp --gcov-options '\-lp'
 
 - name: buildntest
   image: ubuntu:focal
