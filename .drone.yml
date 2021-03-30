@@ -30,3 +30,34 @@ trigger:
   - - refs/pull/*/head
   event:
   - push
+
+---
+kind: pipeline
+type: docker
+name: test-on-arm64-pull
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+- name: prep
+  image: ubuntu:focal
+  environment:
+    COVERALLS_REPO_TOKEN:
+      from_secret: coveralls_token
+  commands:
+  - export DEBIAN_FRONTEND=noninteractive
+  - apt-get -y update
+  - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3
+  - mkdir build
+  - cd build
+  - cmake --version
+  - cmake ..
+  - make -j4 && ctest -V -j4
+
+trigger:
+  ref:
+  - - refs/pull/*/head
+  event:
+  - push
