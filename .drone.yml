@@ -36,13 +36,9 @@ steps:
 
 trigger:
   branch:
-    exclude:
-    - master
-    - gh-pages
+  - master
   event:
-    include:
-    - push
-    - pull_request
+  - pull_request
 
 ---
 kind: pipeline
@@ -75,11 +71,9 @@ steps:
 
 trigger:
   branch:
-    exclude:
-    - gh-pages
+  - master
   event:
-    include:
-    - pull_request
+  - pull_request
 
 ---
 kind: pipeline
