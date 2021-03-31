@@ -79,7 +79,6 @@ trigger:
     - gh-pages
   event:
     include:
-    - push
     - pull_request
 
 ---
