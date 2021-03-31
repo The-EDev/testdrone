@@ -35,8 +35,10 @@ steps:
   - coveralls -i include --exclude-pattern .*/http_parser_merged.h --exclude-pattern .*/TinySHA1.hpp --gcov-options '\-lp'
 
 trigger:
-  ref:
-  - refs/pull/*/head
+  branch:
+    exclude:
+      - master
+      - gh-pages
   event:
   - push
 
@@ -70,8 +72,10 @@ steps:
   - make -j4 && ctest -V -j4
 
 trigger:
-  ref:
-  - refs/pull/*/head
+  branch:
+    exclude:
+      - master
+      - gh-pages
   event:
   - push
 
