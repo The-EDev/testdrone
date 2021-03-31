@@ -7,7 +7,7 @@ platform:
   arch: amd64
 
 steps:
-- name: prep
+- name: build-and-test
   image: ubuntu:focal
   environment:
     COVERALLS_REPO_TOKEN:
@@ -16,7 +16,7 @@ steps:
   commands:
   - export DEBIAN_FRONTEND=noninteractive
   - apt-get -y update
-  - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git clang
+  - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls
   - export CC=/usr/bin/gcc
   - export CXX=/usr/bin/g++
@@ -50,12 +50,12 @@ platform:
   arch: arm64
 
 steps:
-- name: prep
+- name: build-and-test
   image: ubuntu:focal
   commands:
   - export DEBIAN_FRONTEND=noninteractive
   - apt-get -y update
-  - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3 clang
+  - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3
   - mkdir build
   - cd build
   - cmake --version
@@ -85,7 +85,7 @@ platform:
   arch: amd64
 
 steps:
-- name: prep
+- name: build-and-test
   image: ubuntu:focal
   environment:
     COVERALLS_REPO_TOKEN:
@@ -101,7 +101,7 @@ steps:
   - export DEBIAN_FRONTEND=noninteractive
   - export DOXYFILE=$DRONE_BUILD_DIR/Doxyfile
   - apt-get -y update
-  - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git clang
+  - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls
   - export CC=/usr/bin/gcc
   - export CXX=/usr/bin/g++
@@ -137,12 +137,12 @@ platform:
   arch: arm64
 
 steps:
-- name: prep
+- name: build-and-test
   image: ubuntu:focal
   commands:
   - export DEBIAN_FRONTEND=noninteractive
   - apt-get -y update
-  - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3 clang
+  - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3
   - mkdir build
   - cd build
   - cmake --version
