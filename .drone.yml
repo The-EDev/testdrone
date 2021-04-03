@@ -15,6 +15,10 @@ steps:
 
   commands:
   - export DEBIAN_FRONTEND=noninteractive
+  - export CI_NAME=drone-io
+  - export CI_BUILD_NUMBER=$DRONE_BUILD_NUMBER
+  - export CI_BUILD_URL=https://$DRONE_SYSTEM_HOSTNAME/$DRONE_REPO/$DRONE_BUILD_NUMBER
+  - export CI_BRANCH=$DRONE_REPO_BRANCH
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls
@@ -100,6 +104,10 @@ steps:
   - export DRONE_BUILD_DIR=$PWD
   - export DEBIAN_FRONTEND=noninteractive
   - export DOXYFILE=$DRONE_BUILD_DIR/Doxyfile
+  - export CI_NAME=drone-io
+  - export CI_BUILD_NUMBER=$DRONE_BUILD_NUMBER
+  - export CI_BUILD_URL=https://$DRONE_SYSTEM_HOSTNAME/$DRONE_REPO/$DRONE_BUILD_NUMBER
+  - export CI_BRANCH=$DRONE_REPO_BRANCH
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls
