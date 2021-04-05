@@ -22,13 +22,13 @@ steps:
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls pyyaml
-  - set -o pipefail
   - export CC=/usr/bin/gcc
   - export CXX=/usr/bin/g++
   - mkdir build
   - cd build
   - cmake ..
-  - make -j4 && ctest -V -j4
+  - make -j4
+  - ctest -V -j4
   - cd ..
   - coveralls --verbose --exclude-pattern .*/http_parser_merged.h --exclude-pattern .*/TinySHA1.hpp
   - export CC=/usr/bin/clang
@@ -36,7 +36,8 @@ steps:
   - mkdir build-clang
   - cd build-clang
   - cmake ..
-  - make -j4 && ctest -V -j4
+  - make -j4
+  - ctest -V -j4
 
 trigger:
   branch:
@@ -60,19 +61,20 @@ steps:
   - export DEBIAN_FRONTEND=noninteractive
   - apt-get -y update
   - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3
-  - set -o pipefail
   - mkdir build
   - cd build
   - cmake --version
   - cmake ..
-  - make -j4 && ctest -V -j4
+  - make -j4
+  - ctest -V -j4
   - cd ..
   - export CC=/usr/bin/clang
   - export CXX=/usr/bin/clang++
   - mkdir build-clang
   - cd build-clang
   - cmake ..
-  - make -j4 && ctest -V -j4
+  - make -j4
+  - ctest -V -j4
 
 trigger:
   branch:
@@ -109,13 +111,13 @@ steps:
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls pyyaml
-  - set -o pipefail
   - export CC=/usr/bin/gcc
   - export CXX=/usr/bin/g++
   - mkdir build
   - cd build
   - cmake ..
-  - make -j4 && ctest -V -j4
+  - make -j4
+  - ctest -V -j4
   - cd ..
   - coveralls --verbose --exclude-pattern .*/http_parser_merged.h --exclude-pattern .*/TinySHA1.hpp
   - export CC=/usr/bin/clang
@@ -123,7 +125,8 @@ steps:
   - mkdir build-clang
   - cd build-clang
   - cmake ..
-  - make -j4 && ctest -V -j4
+  - make -j4
+  - ctest -V -j4
   - chmod +x ../scripts/generateDocumentationAndDeploy.sh
 
 trigger:
@@ -148,19 +151,20 @@ steps:
   - export DEBIAN_FRONTEND=noninteractive
   - apt-get -y update
   - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3
-  - set -o pipefail
   - mkdir build
   - cd build
   - cmake --version
   - cmake ..
-  - make -j4 && ctest -V -j4
+  - make -j4
+  - ctest -V -j4
   - cd ..
   - export CC=/usr/bin/clang
   - export CXX=/usr/bin/clang++
   - mkdir build-clang
   - cd build-clang
   - cmake ..
-  - make -j4 && ctest -V -j4
+  - make -j4
+  - ctest -V -j4
 
 trigger:
   branch:
