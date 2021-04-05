@@ -42,7 +42,7 @@ namespace crow
     {
     public:
         ///This crow application
-        using self_t = Croweeeee;
+        using self_t = Crow;
         ///The HTTP server
         using server_t = Server<Crow, SocketAdaptor, Middlewares...>;
 #ifdef CROW_ENABLE_SSL
