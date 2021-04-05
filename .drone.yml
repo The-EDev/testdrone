@@ -22,7 +22,7 @@ steps:
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls pyyaml
-  - set -e
+  - set -o pipefail
   - export CC=/usr/bin/gcc
   - export CXX=/usr/bin/g++
   - mkdir build
@@ -60,7 +60,7 @@ steps:
   - export DEBIAN_FRONTEND=noninteractive
   - apt-get -y update
   - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3
-  - set -e
+  - set -o pipefail
   - mkdir build
   - cd build
   - cmake --version
@@ -109,7 +109,7 @@ steps:
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls pyyaml
-  - set -e
+  - set -o pipefail
   - export CC=/usr/bin/gcc
   - export CXX=/usr/bin/g++
   - mkdir build
@@ -148,7 +148,7 @@ steps:
   - export DEBIAN_FRONTEND=noninteractive
   - apt-get -y update
   - apt-get -y install libboost-all-dev zlib1g-dev gcc clang make cmake python3
-  - set -e
+  - set -o pipefail
   - mkdir build
   - cd build
   - cmake --version
