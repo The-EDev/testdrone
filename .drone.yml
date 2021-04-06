@@ -18,8 +18,6 @@ steps:
   - export CI_NAME=drone-io
   - export CI_BUILD_NUMBER=$DRONE_BUILD_NUMBER
   - export CI_BUILD_URL=https://$DRONE_SYSTEM_HOSTNAME/$DRONE_REPO/$DRONE_BUILD_NUMBER
-  - export CI_BRANCH=$DRONE_SOURCE_BRANCH
-  - echo $CI_BRANCH
   - apt-get -y update
   - apt-get -y install libboost-all-dev doxygen mkdocs graphviz zlib1g-dev gcc clang make cmake python3 python3-pip git
   - pip3 install mkdocs-material cpp-coveralls pyyaml
@@ -32,6 +30,7 @@ steps:
   - make -j4
   - ctest -V -j4
   - cd ..
+  - export CI_BRANCH=$DRONE_SOURCE_BRANCH
   - coveralls --verbose --exclude-pattern .*/http_parser_merged.h --exclude-pattern .*/TinySHA1.hpp
   - export CC=/usr/bin/clang
   - export CXX=/usr/bin/clang++
