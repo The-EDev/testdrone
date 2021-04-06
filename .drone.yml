@@ -15,8 +15,7 @@ steps:
 
   commands:
   - export DEBIAN_FRONTEND=noninteractive
-  - echo $TRAVIS_BRANCH
-  - echo $APPVEYOR_REPO_BRANCH
+  - echo $DRONE_SOURCE_BRANCH
   - export CI_NAME=drone-io
   - export CI_BUILD_NUMBER=$DRONE_BUILD_NUMBER
   - export CI_BUILD_URL=https://$DRONE_SYSTEM_HOSTNAME/$DRONE_REPO/$DRONE_BUILD_NUMBER
@@ -33,6 +32,8 @@ steps:
   - ctest -V -j4
   - cd ..
   - export CI_BRANCH=$DRONE_SOURCE_BRANCH
+  - export $APPVEYOR_REPO_BRANCH=$DRONE_SOURCE_BRANCH
+  - export $TRAVIS_BRANCH=$DRONE_SOURCE_BRANCH
   - coveralls --verbose --exclude-pattern .*/http_parser_merged.h --exclude-pattern .*/TinySHA1.hpp
   - export CC=/usr/bin/clang
   - export CXX=/usr/bin/clang++
