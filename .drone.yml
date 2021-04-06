@@ -15,6 +15,8 @@ steps:
 
   commands:
   - export DEBIAN_FRONTEND=noninteractive
+  - echo $TRAVIS_BRANCH
+  - echo $APPVEYOR_REPO_BRANCH
   - export CI_NAME=drone-io
   - export CI_BUILD_NUMBER=$DRONE_BUILD_NUMBER
   - export CI_BUILD_URL=https://$DRONE_SYSTEM_HOSTNAME/$DRONE_REPO/$DRONE_BUILD_NUMBER
