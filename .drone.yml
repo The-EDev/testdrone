@@ -32,8 +32,8 @@ steps:
   - ctest -V -j4
   - cd ..
   - export CI_BRANCH=$DRONE_SOURCE_BRANCH
-  - export $APPVEYOR_REPO_BRANCH=$DRONE_SOURCE_BRANCH
-  - export $TRAVIS_BRANCH=$DRONE_SOURCE_BRANCH
+  - export APPVEYOR_REPO_BRANCH=$DRONE_SOURCE_BRANCH
+  - export TRAVIS_BRANCH=$DRONE_SOURCE_BRANCH
   - coveralls --verbose --exclude-pattern .*/http_parser_merged.h --exclude-pattern .*/TinySHA1.hpp
   - export CC=/usr/bin/clang
   - export CXX=/usr/bin/clang++
